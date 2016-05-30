@@ -1,0 +1,33 @@
+{
+  "name": "proasistencia-importador",
+  "version": "0.0.1",
+  "description": "Importador inicial de los registros de la base de datos proasistencia",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rafaelgr/proasistencia-importador.git"
+  },
+  "keywords": [
+    "proasistencia"
+  ],
+  "bin": {
+    "pro-import": "./index.js"
+  },
+  "author": "'Rafael <'rafa@myariadna.com'>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rafaelgr/proasistencia-importador/issues"
+  },
+  "homepage": "https://github.com/rafaelgr/proasistencia-importador#readme",
+  "dependencies": {
+    "async": "^1.5.2",
+    "chalk": "^1.1.3",
+    "commander": "^2.9.0",
+    "edge": "^5.0.0",
+    "mysql": "^2.10.2",
+    "progress": "^1.1.8"
+  }
+}
