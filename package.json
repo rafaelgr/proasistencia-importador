@@ -1,6 +1,6 @@
 {
   "name": "proasistencia-importador",
-  "version": "0.0.1",
+  "version": "1.0.2",
   "description": "Importador inicial de los registros de la base de datos proasistencia",
   "main": "index.js",
   "scripts": {

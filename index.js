@@ -6,6 +6,7 @@ var async = require('async');
 
 var impEmpresas = require('./importadores/imp_empresas');
 var impClientes = require('./importadores/imp_clientes');
+var impComerciales = require('./importadores/imp_comerciales');
 
 
 console.log(chalk.bold.cyan('Importador proasistencia'));
@@ -16,7 +17,8 @@ program
     .option('-u, --user [user]', 'Usuario MYSQL')
     .option('-p, --password [password]', 'Contraseña MYSQL')
     .parse(process.argv);
-
+    
+/*
 impEmpresas.importarEmpresas(program.dsn, program.server, program.user, program.password, function(err) {
     if (err) {
         console.log(err.message);
@@ -27,10 +29,27 @@ impEmpresas.importarEmpresas(program.dsn, program.server, program.user, program.
                 console.log(err.message);
             } else {
                 console.log(chalk.bold.green("Importar clientes finalizado"));
+                impComerciales.importarComerciales(program.dsn, program.server, program.user, program.password, function(err) {
+                    if (err) {
+                        console.log(err.message);
+                    } else {
+                        console.log(chalk.bold.green("Importar comerciales finalizado"));
+                    }
+                })
             }
         })
     }
 })
+*/
+
+impComerciales.importarComerciales(program.dsn, program.server, program.user, program.password, function(err) {
+    if (err) {
+        console.log(err.message);
+    } else {
+        console.log(chalk.bold.green("Importar comerciales finalizado"));
+    }
+})
+
 
 
 //

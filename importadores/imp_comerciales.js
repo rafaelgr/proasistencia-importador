@@ -31,36 +31,36 @@ function closeConnection(connection) {
     });
 }
 
-var insertEmpresa = function(empresa, server, usuario, password, callback) {
+var insertComercial = function(comercial, server, usuario, password, callback) {
     var connection = getConnection(server, usuario, password);
-    sql = "INSERT INTO empresas SET ?";
-    sql = mysql.format(sql, empresa);
+    sql = "INSERT INTO comerciales SET ?";
+    sql = mysql.format(sql, comercial);
     connection.query(sql, function(err, result) {
         closeConnection(connection, callback);
         if (err) {
             return callback(err);
         }
-        empresa.empresaId = result.insertId;
-        callback(null, empresa);
+        comercial.comercialId = result.insertId;
+        callback(null, comercial);
     });
 }
 
-module.exports.importarEmpresas = function(dsn, server, usuario, password, callback) {
-    sqlany.empresas(dsn, function(err, result) {
+module.exports.importarComerciales = function(dsn, server, usuario, password, callback) {
+    sqlany.comerciales(dsn, function(err, result) {
         if (err) {
             console.log(chalk.bold.red(err.message));
         } else {
-            empresas = JSON.parse(result);
-            console.log(chalk.bold.green("Importar empresas"));
+            comerciales = JSON.parse(result);
+            console.log(chalk.bold.green("Importar comerciales"));
             var barOpts = {
                 width: 20,
-                total: empresas.length,
+                total: comerciales.length,
                 clear: false
             };
-            var bar2 = new ProgressBar(' Importando... [:bar] :percent (:current de :total) Quedan :eta segundos', barOpts);
-            async.eachSeries(empresas, function(empresa, callback2) {
-                insertEmpresa(empresa, server, usuario, password, function(err, res) {
-                    bar2.tick();
+            var bar = new ProgressBar(' Importando... [:bar] :percent (:current de :total) Quedan :eta segundos', barOpts);
+            async.eachSeries(comerciales, function(comercial, callback2) {
+                insertComercial(comercial, server, usuario, password, function(err, res) {
+                    bar.tick();
                     if (err) {
                         callback2(err);
                     } else {
